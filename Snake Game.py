@@ -18,6 +18,10 @@ food = Food()
 score = Score()
 
 #MAIN GAME
+def make_game_false():
+    global game
+    game = False
+    
 game = True
 while game:
     snake.move()
@@ -30,13 +34,14 @@ while game:
     window.onkey(snake.down , 'Down')
     window.onkey(snake.left , 'Left')
     window.onkey(snake.right , 'Right')
-    window.onkey(score.reset , 'r')
+    window.onkey(make_game_false , 'Escape')
 
     #CHECK TO EAT
     if snake.head.distance(food) < 15 :
         food.appear()
         snake.extend()
         score.increase()
+        continue
 
     #CHECK IF IT HAS TOUCHED THE EDGE
     if (snake.head.xcor() > 280 or snake.head.xcor() < -280) or (snake.head.ycor() > 280 or snake.head.ycor() < -280):
