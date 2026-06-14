@@ -1,13 +1,24 @@
 from turtle import Turtle
 
 class Snake():
+    """
+    The Class That Creates, Extends and Move Snake In Any Direction
+    """
+    
     def __init__(self):
+        """
+        Initialize Magic Method
+        """
+        
         self.turtles = []
         self.positions = [(-20,0), (0,0), (20,0)]
         self.create_snake()
         self.head = self.turtles[-1]
 
     def create_snake(self):
+        """
+        Create Snake Method
+        """
         for i in range(len(self.positions)):
             block = Turtle("square")
             block.shapesize(0.5 ,0.5)
@@ -17,6 +28,10 @@ class Snake():
             self.turtles.append(block)
 
     def extend(self):
+        """
+        Extend Snake Method
+        """
+        
         block = Turtle('square')
         block.shapesize(0.5,0.5)
         block.color('white')
@@ -25,6 +40,10 @@ class Snake():
         self.turtles.insert(0, block)
 
     def move(self):
+        """
+        Move Snake Methd
+        """
+        
         for i in range(len(self.turtles)-1):
             self.turtles[i].goto(  self.turtles[i+1].pos() )
         self.head.forward(10)
